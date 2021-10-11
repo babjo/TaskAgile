@@ -1,6 +1,6 @@
 <template>
   <div class="logo-wrapper">
-    <img class="logo" src="/static/images/logo.png">
+    <img class="logo" src="/images/logo.png">
     <div class="tagline">Open source task management tool</div>
   </div>
 </template>
