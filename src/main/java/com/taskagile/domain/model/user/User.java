@@ -58,7 +58,12 @@ public class User extends AbstractBaseEntity {
         return user;
     }
 
-    public Long getId() {
+    public void updateName(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public long getId() {
         return id;
     }
 
