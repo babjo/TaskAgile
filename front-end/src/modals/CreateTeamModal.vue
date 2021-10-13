@@ -68,13 +68,13 @@ export default {
       }).catch(error => {
         this.errorMessage = error.message
       })
+    },
+    close () {
+      this.$v.$reset()
+      this.team.name = ''
+      this.errorMessage = ''
+      $('#createTeamModal').modal('hide')
     }
-  },
-  close () {
-    this.$v.$reset()
-    this.team.name = ''
-    this.errorMessage = ''
-    $('#createTeamModal').modal('hide')
   }
 }
 </script>

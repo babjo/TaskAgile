@@ -31,18 +31,30 @@
         </div>
       </div>
       <div class="create-team-wrapper">
-        <button class="btn btn-link">+ Create New Team</button>
+        <button class="btn btn-link" @click="createTeam()">+ Create New Team</button>
       </div>
     </div>
+    <CreateBoardModal
+        :teamId="selectedTeamId"
+        @created="onBoardCreated" />
+    <CreateTeamModal />
   </div>
 </template>
 
 <script>
+import $ from 'jquery'
 import PageHeader from '@/components/PageHeader.vue'
+import CreateBoardModal from '@/modals/CreateBoardModal.vue'
+import CreateTeamModal from '@/modals/CreateTeamModal.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'HomePage',
+  data () {
+    return {
+      selectedTeamId: 0
+    }
+  },
   computed: {
     ...mapGetters([
       'personalBoards',
@@ -50,15 +62,23 @@ export default {
     ])
   },
   components: {
-    PageHeader
+    PageHeader,
+    CreateBoardModal,
+    CreateTeamModal
   },
   methods: {
     openBoard (board) {
       this.$router.push({ name: 'board', params: { boardId: board.id } })
     },
     createBoard (team) {
+      this.selectedTeamId = team ? team.id : 0
+      $('#createBoardModal').modal('show')
     },
     createTeam () {
+      $('#createTeamModal').modal('show')
+    },
+    onBoardCreated (boardId) {
+      this.$router.push({ name: 'board', params: { boardId: boardId } })
     }
   }
 }

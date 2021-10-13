@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 import errorParser from '@/utils/error-parser'
 
 export default {

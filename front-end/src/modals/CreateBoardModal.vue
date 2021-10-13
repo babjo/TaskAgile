@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="saveBoard">
-    <div class="modal" tabindex="-1" , role="dialog" backdrop="static" id="createBoardModal">
+    <div class="modal" tabindex="-1" role="dialog" backdrop="static" id="createBoardModal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -42,7 +42,7 @@ import boardService from '@/services/boards'
 export default {
   name: 'CreateBoardModal',
   props: ['teamId'],
-  data() {
+  data () {
     return {
       board: {
         name: '',
@@ -55,10 +55,10 @@ export default {
     board: {
       name: {
         required
+      },
+      description: {
+        required
       }
-    },
-    description: {
-      required
     }
   },
   mounted () {
@@ -88,7 +88,7 @@ export default {
       })
     },
     close () {
-      this.$v.reset()
+      this.$v.$reset()
       this.board.name = ''
       this.board.description = ''
       this.errorMessage = ''
