@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate';
 import registrationService from '@/services/registration'
 import RegisterPage from '@/views/RegisterPage'
+import { i18n } from '@/i18n'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
@@ -23,7 +24,8 @@ describe('RegisterPage.vue', () => {
   beforeEach(() => {
     wrapper = mount(RegisterPage, {
       localVue,
-      router
+      router,
+      i18n
     })
     fieldUsername = wrapper.find('#username')
     fieldEmailAddress = wrapper.find('#emailAddress')

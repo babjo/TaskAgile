@@ -82,7 +82,7 @@ describe('utils/error-parser', () => {
       }
     }
     const parsed = errorParser.parse(error)
-    expect(parsed.message).toEqual('This is rephrased error message. Please try again later.')
+    expect(parsed.message).toEqual('This is rephrased error message.')
   })
 
   it('should parse HTTP 500 unknown error', () => {

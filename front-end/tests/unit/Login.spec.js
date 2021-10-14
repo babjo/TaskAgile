@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate';
 import LoginPage from '@/views/LoginPage'
 import authenticationService from '@/services/authentication'
+import { i18n } from '@/i18n'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
@@ -21,7 +22,8 @@ describe('LoginPage.vue', () => {
   beforeEach(() => {
     wrapper = mount(LoginPage, {
       localVue,
-      router
+      router,
+      i18n
     })
     fieldUsername = wrapper.find('#username')
     fieldPassword = wrapper.find('#password')
