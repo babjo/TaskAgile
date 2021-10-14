@@ -1,5 +1,6 @@
 package com.taskagile.config;
 
+import com.taskagile.domain.common.security.AccessDeniedHandlerImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -26,7 +27,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler())
+            .and()
+                .authorizeRequests()
                 .antMatchers(PUBLIC).permitAll()
                 .anyRequest().authenticated()
             .and()
@@ -74,5 +77,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public LogoutSuccessHandler logoutSuccessHandler() {
         return new SimpleLogoutSuccessHandler();
+    }
+
+    public AccessDeniedHandlerImpl accessDeniedHandler() {
+        return new AccessDeniedHandlerImpl();
     }
 }

@@ -63,8 +63,8 @@ public class User extends AbstractBaseEntity {
         this.lastName = lastName;
     }
 
-    public long getId() {
-        return id;
+    public UserId getId() {
+        return new UserId(id);
     }
 
     public String getUsername() {

@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class SimpleUser implements UserDetails, Serializable {
 
-    private long userId;
+    private UserId userId;
     private String username;
     private String password;
 
@@ -26,7 +26,8 @@ public class SimpleUser implements UserDetails, Serializable {
         return Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
-    public long getUserId() {
+    public UserId
+    getUserId() {
         return userId;
     }
 
